@@ -1,0 +1,26 @@
+﻿<Window x:Class="Lab4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="События в WPF" Height="400" Width="500"
+        Loaded="WindowLoaded">
+    <StackPanel Margin="20" VerticalAlignment="Top" HorizontalAlignment="Center" >
+
+        <!-- Поле ввода с Label -->
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10" VerticalAlignment="Center">
+            <TextBox x:Name="InputBox" Width="250" Height="30" 
+                     PreviewKeyDown ="InputBoxPreviewKeyDown"
+                     GotFocus="InputBoxGotFocus" 
+                     LostFocus="InputBoxLostFocus"
+                     TextChanged="InputBoxTextChanged"/>
+            <Label x:Name="OutputLabel" Content="→" Width="200" VerticalAlignment="Center" Margin="10,0,0,0"/>
+        </StackPanel>
+
+        <Button Content="Сброс фокуса" Width="120" Margin="0,0,0,10" Click="ButtonClick"/>
+
+        <!-- Прямоугольник -->
+        <Rectangle x:Name="InteractiveRectangle" Width="200" Height="100" Fill="LightGray"
+                   MouseEnter="RectangleMouseEnter"
+                   MouseLeave="RectangleMouseLeave"
+                   MouseDown="RectangleMouseDown"/>
+    </StackPanel>
+</Window>
