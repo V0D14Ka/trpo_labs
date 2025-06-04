@@ -73,24 +73,16 @@ namespace Lab4
             }
         }
 
-        private void InputBoxTextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (!_isPlaceholder && string.IsNullOrWhiteSpace(InputBox.Text))
-                ShowPlaceholder();
-            else RemovePlaceholder();
-        }
-
         private void InputBoxPreviewKeyDown(object sender, KeyEventArgs e)
         {
             if (_isPlaceholder) return;
 
-            if (e.Key == Key.Space)
+            if (e.Key == Key.Space && !_isPlaceholder)
             {
                 e.Handled = true;
                 InputBox.Clear();
-                ShowPlaceholder();
-            }
-            else if (e.Key == Key.Enter)
+            } 
+            else if (e.Key == Key.Enter && !string.IsNullOrWhiteSpace(InputBox.Text))
             {
                 OutputLabel.Content = InputBox.Text;
                 e.Handled = true;
