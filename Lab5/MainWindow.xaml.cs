@@ -20,5 +20,20 @@ namespace Lab5
         {
             InitializeComponent();
         }
+
+        private void SolidRed_Click(object sender, RoutedEventArgs e)
+        {
+            SolidRect.Fill = new SolidColorBrush(Colors.Red);
+        }
+
+        private void SolidGreen_Click(object sender, RoutedEventArgs e)
+        {
+            SolidRect.Fill = new SolidColorBrush(Colors.Green);
+        }
+
+        private void SolidBlue_Click(object sender, RoutedEventArgs e)
+        {
+            SolidRect.Fill = new SolidColorBrush(Colors.Blue);
+        }
     }
 }

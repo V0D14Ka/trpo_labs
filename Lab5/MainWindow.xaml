@@ -1,12 +1,92 @@
 ﻿<Window x:Class="Lab5.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Lab5"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="WPF Brushes Demo" Height="800" Width="1000" Background="White">
+    <ScrollViewer>
+        <StackPanel Margin="20" Orientation="Vertical" Background="#F0F0F0">
 
-    </Grid>
+            <!-- Задание 1: SolidColorBrush -->
+            <GroupBox Header="1. Однородная заливка (SolidColorBrush)" Margin="5">
+                <StackPanel Orientation="Vertical" Margin="10">
+                    <Rectangle x:Name="SolidRect" Width="200" Height="100" Fill="Gray" Margin="5"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="Красный" Click="SolidRed_Click" Margin="5"/>
+                        <Button Content="Зелёный" Click="SolidGreen_Click" Margin="5"/>
+                        <Button Content="Синий" Click="SolidBlue_Click" Margin="5"/>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+
+            <!-- Задание 2: LinearGradientBrush -->
+            <GroupBox Header="2. Линейный градиент (LinearGradientBrush)" Margin="5">
+                <Rectangle Width="300" Height="100" Margin="10">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush StartPoint="1,0" EndPoint="0,0">
+                            <GradientStop Color="Red" Offset="0"/>
+                            <GradientStop Color="Orange" Offset="0.8"/>
+                            <GradientStop Color="Yellow" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </GroupBox>
+
+            <!-- Задание 3: Заливка изображением (ImageBrush) -->
+            <GroupBox Header="3. Заливка изображением (ImageBrush)" Margin="5">
+                <Rectangle Width="300" Height="150" Margin="10">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="assets/sample.jpg" Stretch="None"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </GroupBox>
+
+            <!-- Задание 4: Радиальный градиент (RadialGradientBrush) -->
+            <GroupBox Header="4. Радиальный градиент (RadialGradientBrush)" Margin="5">
+                <Ellipse Width="150" Height="150" Margin="10">
+                    <Ellipse.Fill>
+                        <RadialGradientBrush GradientOrigin="0.5,0.5" Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
+                            <GradientStop Color="White" Offset="0"/>
+                            <GradientStop Color="Blue" Offset="1"/>
+                        </RadialGradientBrush>
+                    </Ellipse.Fill>
+                </Ellipse>
+            </GroupBox>
+
+            <!-- Задание 5: VisualBrush -->
+            <GroupBox Header="5. Визуальная заливка (VisualBrush)" Margin="5">
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <Button x:Name="SourceButton" Content="Я кнопка!" Width="100" Height="30" Margin="5"/>
+                    <Rectangle Width="200" Height="100" Margin="5">
+                        <Rectangle.Fill>
+                            <VisualBrush Visual="{Binding ElementName=SourceButton}" 
+                                         AlignmentX="Center" AlignmentY="Center" Stretch="None"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                </StackPanel>
+            </GroupBox>
+
+            <!-- Задание 6: DrawingBrush -->
+            <GroupBox Header="6. Сложная заливка (DrawingBrush)" Margin="5">
+                <Rectangle Width="250" Height="150" Margin="10">
+                    <Rectangle.Fill>
+                        <DrawingBrush>
+                            <DrawingBrush.Drawing>
+                                <GeometryDrawing Brush="LightGreen">
+                                    <GeometryDrawing.Geometry>
+                                        <GeometryGroup>
+                                            <EllipseGeometry Center="50,50" RadiusX="40" RadiusY="40"/>
+                                            <RectangleGeometry Rect="70,70,50,50"/>
+                                        </GeometryGroup>
+                                    </GeometryDrawing.Geometry>
+                                    <GeometryDrawing.Pen>
+                                        <Pen Brush="DarkGreen" Thickness="2"/>
+                                    </GeometryDrawing.Pen>
+                                </GeometryDrawing>
+                            </DrawingBrush.Drawing>
+                        </DrawingBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </GroupBox>
+
+        </StackPanel>
+    </ScrollViewer>
 </Window>
